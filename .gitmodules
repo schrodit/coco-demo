@@ -1,0 +1,6 @@
+[submodule "modules/trustee"]
+	path = modules/trustee
+	url = https://github.com/confidential-containers/trustee.git
+[submodule "modules/demo-magic"]
+	path = modules/demo-magic
+	url = https://github.com/paxtonhare/demo-magic.git

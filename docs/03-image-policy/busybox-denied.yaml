@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: image-denied
+  namespace: default
+  annotations:
+    # Gzip/base64 Init-Data containing busybox-policy.rego; refresh using this stage's README.
+    io.katacontainers.config.hypervisor.cc_init_data: "H4sIAAAAAAACA7VWbW/bNhD+rl/BKgNib7HkzKnjdCi61GmKoshiOCv2wXADijxJXChRIyknWpb/vqMkv2V2MwyYAcMm7zne6bm7h1qANkLl5C3x+8Fx0Pc9KhOlhU0zt2dSOhid+N6MU0vnnl8oKVgVaEiUj/bDw0OvoOyOJkDwm9vbBuB5IiuUtsQBg8Wx5x2QS6XJWI0VSUowlojMORWllCJPSKde3tamW7fZPSK5siRVxvbcGjjRStnYNI4mwBMnIic2BWJoBuR9aar36oFwkbjjS4MeUUUi3I7UQ1DRTAZeu7ptgr/BB+SK3YEOhAqliDTVVdhifsZH//H18E3MTzk7Gw0HIzaCQf91fMLZ4ATOTs/iY9aPecwZhagfR/EoZnF8ekphNDiJhpwO+CkMwfc8DjEtpSVjDdTCWOWWihz0FP6omcA0YioNrHGqqC6FhL2ADw/AJloxMGYv5gbspK7FXsS5lOq+tZpLKlwhGpc1FlmuYaRQnEgRA6uYBKwN2Hul79DjiNAcTSoxAfmSS2GsK1V7KqEaCIdcAA+e0XCDbkjzRnZWl+vkLnBTq+oF1Ee3ewHIpzT7MNeYVA7jyZcryPZhvhTY3/Apt6BjyuDbsKkqLewNd875+XTyC4gkjZTeC7uxVNtdrbCFmkKmFvAi7EYkOZX/7Igt0G9U2BcgU6D8xmJ5sm+kbc2L+XwEe3199WGBgvAcgg31qxvZVGTEWDfJOL51jYkBWxYkxsY3dU8VWv0OzLXTQskyw9123muVcAJwRS1LyWeUpkM8JsVm4z3nT3KaOVVhKnc5oL41akJ1JKwb8uaIsFWUgtoUBeX52ImYPHoEPyhi8BBkLljH/xrqMg/vMGaPLXkwYRM8XO90woIaY1OtyiTtvgs7986dRhLC7rsZ7f3Z753NH4cnT73V4niIi6/h/IdOWP90v//OP8JnLkobuBS7dTKwAMzfQJLhkzlGTCGF7axhR8QP/W6buvsssa9Q7gJ/93a7/+Q9ed4emVrR0YS6Hn8KznNklTp+zcwXKrgrI9AoDSjPTItgxUbPVgX4c/IWQ602m4gLKgVv9PjWWKXxt7Ol0l2X0kFzc6Com3UHYM2jUkjbQxIKirb2TonxonGgz6tsli0W1N0nDIEHBoXLm3CF5ro3apmj+UaTYN1RzvDPxunB/0xPm6n/7Kh2cINznRiHm/lhnZQ/38ui3wBq/nbZG3Y38t60Gjews3ZB/iJG4RW7XCLfTWZL8E9LU8C1wP6sn+T5jd6mylSZ2852sK5zOG5mrRlJjL4NmfXnG/bAqFIzcG41bNMUG0dnnQJqp5a08jfNmYuPrykCW9+5ryieoj2Y4AB5NfyAXKimMZjrFewMhU2lVyS0T0pN3TMSb44cS72AOk6jYhXehVmwObX7CNyY1roPga/K1P521/O5D7Eu5b+pxn86CRN/9KFIIQNNJaqTLxVr/qz0rReJnPtPW+6bpL/aTbqDO7qNuxjNPb6AdnZ4HzlNZ9R2fIw523FOrX7zrut693L6N/wt76DfCgAA"
+    io.containerd.cri.runtime-handler: kata-qemu-coco-dev
+spec:
+  runtimeClassName: kata-qemu-coco-dev
+  restartPolicy: Never
+  automountServiceAccountToken: false
+  containers:
+    - name: busybox
+      image: docker.io/library/busybox@sha256:b7f3d86d6e84fc17718c48bcde1450807faa2d56704205c697b4bd5df7b9e29f
+      imagePullPolicy: Always
+      command: ["/bin/sh", "-c", "echo Image allowed by guest policy"]

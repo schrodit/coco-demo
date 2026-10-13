@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx
+  name: nginx-no-admin
+  namespace: default
+  annotations:
+    # Gzip/base64 Init-Data containing no-logs-exec-policy.rego.
+    io.katacontainers.config.hypervisor.cc_init_data: "H4sIAAAAAAACA4WUTW/TQBCG7/4Vo3AISJFpBQeE1ENIP9RDSZQQ9YBQtVmP7VX2w+yM0+bfM2sDoVSuD5bl3Wfed+ZdrQ8YyQQPFzA5y8/zs0mmbBWi4dqlNarVh08fJ9n3QrH6kU2aYI0+5hGrMJH96XSaNUrvVYUgj+eHHsgy45oQGRKYH86z7A18sUHvQQfnlC8An1C3nJzTF3ERWn4vL4xRilRB8Hbf7lCz7dCOsqGid3lWYKlay3Al66sYNBKt8WeLxPD5AkplCf8ya5HasAi6QeRehsURZoO86gYbJObWhsffu3StjDW+6ktOrITQYRKCZ2U8RtBim1KYQdXpGpeibFqb6mfd1D5Epyw0QQIwJeqjtpiL1LfaEPRxS2LE0WgmUDrlARwgtt6LyMmMZqLF8FgbXfdGBE4dE5j0tt4aYixErJ8CVEQo0Bssej8Eqo0TwcZIKUlzu/AEhNw2UBora8aLMQvYT7PDMogGsYr8vJXTKS5Cc7yW4n+S5diegl2khHDxp3IIW0lkt2mm13U2fdND0GXKMRxHqJu0eonSkKUhZilpelystnfohphtI7cKbz1jLJXG17G1XBActJsXxXy9+oqmqnchDmKbdBKjWa7RhcN45BtTeWVf3sBn0L0yPIJIU0yjbjfIy+Xd1UF+Mv8j6S/0C1rJuhLIBAAA"
+    io.containerd.cri.runtime-handler: kata-qemu-coco-dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.29.4
+  dnsPolicy: ClusterFirst
+  runtimeClassName: kata-qemu-coco-dev
