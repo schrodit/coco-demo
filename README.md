@@ -3,6 +3,16 @@
 > [!WARNING]
 > This code is for demo purposes only and should not be used in production.
 
+## What this demo shows
+
+This demo walks through running Kubernetes workloads with Confidential Containers
+and Kata Containers, then applying guest policies through Init-Data to deny
+`kubectl exec` and log access and allow only a specific container image digest.
+Finally, it uses Trustee's Key Broker Service (KBS) to release a secret only for
+approved Init-Data: enabling exec changes the policy hash and blocks secret
+retrieval. The default dev runtime uses sample evidence; the stage 4 docs also
+describe a hardware-verified TDX variant.
+
 ## Demo walkthrough
 
 Follow the [four stages in docs](docs/README.md). Each stage contains its
@@ -69,3 +79,11 @@ See [Helm's OCI documentation](https://helm.sh/docs/topics/registries/).
 
 `make help` lists targets and configurable paths. Dependency builds use the
 chart's lock file when present; Helm resolves dependencies if no lock file exists.
+
+## Upstream documentation
+
+- [Confidential Containers documentation](https://confidentialcontainers.org/docs/)
+- [Kata agent policies](https://github.com/kata-containers/kata-containers/blob/main/docs/how-to/how-to-use-the-kata-agent-policy.md)
+- [Init-Data](https://confidentialcontainers.org/docs/features/initdata/)
+- [Trustee attestation and KBS resource policies](https://confidentialcontainers.org/docs/attestation/policies/)
+- [Sealed secrets](https://confidentialcontainers.org/docs/features/sealed-secrets/)
