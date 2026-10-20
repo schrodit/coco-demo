@@ -1,5 +1,8 @@
 # coco-demo
 
+> [!WARNING]
+> This code is for demo purposes only and should not be used in production.
+
 ## Demo walkthrough
 
 Follow the [four stages in docs](docs/README.md). Each stage contains its
