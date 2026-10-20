@@ -11,17 +11,17 @@ templates and commands:
 4. [Secret release bound to Init-Data](docs/04-reference-secret/README.md)
 
 ## Prerequisite Tools
-#### KataContainer GenPolicy
-```bash
-VERSION=4.2.0
-mkdir -p kata-tools-artifacts
-curl -fsSL "https://github.com/kata-containers/kata-containers/releases/download/${VERSION}/kata-tools-static-${VERSION}-amd64.tar.zst" \
-  --output kata-tools-artifacts/kata-tools-static.tar.zst
-tar xf ./kata-tools-artifacts/kata-tools-static.tar.zst -C ./kata-tools-artifacts
-sudo install -o root -g root -m 0755 ./kata-tools-artifacts/opt/kata/bin/genpolicy /opt/kata/bin/genpolicy
-sudo cp -R ./kata-tools-artifacts/opt/kata/share/defaults/kata-containers/* /opt/kata/share/defaults/kata-containers
-rm -rf kata-tools-artifacts
-```
+
+- [Bash](https://www.gnu.org/software/bash/)
+- [GNU Make](https://www.gnu.org/software/make/)
+- [Helm](https://helm.sh/)
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/)
+- [Python 3](https://www.python.org/)
+- [Kata Containers GenPolicy](https://github.com/kata-containers/kata-containers/tree/main/src/tools/genpolicy)
+- [ORAS](https://oras.land/)
+- [yq v4 (Mike Farah)](https://mikefarah.gitbook.io/yq/)
+- [GNU Coreutils (`base64`)](https://www.gnu.org/software/coreutils/)
+- [GNU gzip](https://www.gnu.org/software/gzip/)
 
 ## Trustee Helm chart
 
