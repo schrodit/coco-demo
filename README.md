@@ -23,7 +23,27 @@ sudo cp -R ./kata-tools-artifacts/opt/kata/share/defaults/kata-containers/* /opt
 rm -rf kata-tools-artifacts
 ```
 
-## Publish the Trustee Helm chart
+## Trustee Helm chart
+
+The Trustee Helm chart is served through this repository's
+[GitHub Container Registry package](https://github.com/users/schrodit/packages/container/package/charts%2Ftrustee)
+at `oci://ghcr.io/schrodit/charts/trustee`.
+After the first successful publication, install the pinned chart version with:
+
+```sh
+helm upgrade --install trustee oci://ghcr.io/schrodit/charts/trustee --version 0.21.0
+```
+
+The [release workflow](.github/workflows/release-trustee-chart.yml) publishes on
+GitHub release publication and supports manual runs from the Actions tab. It
+builds the pinned `modules/trustee` submodule and uses its `Chart.yaml` version
+(currently `0.21.0`) as the registry tag, independently of the GitHub release tag.
+Update the submodule to a new chart version before publishing an updated chart.
+The workflow uses `GITHUB_TOKEN` with package write permission; no registry
+secret is needed. After the first publication, set the package visibility to
+public in GitHub's package settings to allow anonymous installation.
+
+### Publish manually
 
 Requires Helm 3.8+ or Helm 4 and a checkout of
 [Trustee](https://github.com/confidential-containers/trustee) at `modules/trustee`.
