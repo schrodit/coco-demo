@@ -13,8 +13,10 @@ fi
 
 # Keep upstream display options, including -d to disable simulated typing.
 source "$DEMO_MAGIC_PATH" "$@"
-# All stages print and execute without waiting for Enter.
-NO_WAIT=true
+# Display each command immediately, then require Enter before executing it.
+NO_WAIT=false
+NO_WAIT_DISPLAY_CMD=true
+PROMPT_TIMEOUT=0
 set -eo pipefail
 
 DEMO_PROMPT='$ '

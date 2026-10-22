@@ -18,7 +18,7 @@ help:
 		'make demo3                          Show allowed and denied image digests' \
 		'make demo4                          Show secret release bound to Init-Data' \
 		'make cleanup                        Delete all demo pods and the demo Kubernetes secret' \
-		'Demos run without pauses; add DEMO_ARGS="-d" to disable typing' \
+		'Demos wait for Enter before execution; add DEMO_ARGS="-d" to disable typing' \
 		'make trustee-build                  Build dependencies, lint, and package the Trustee chart' \
 		'make trustee-lint                   Build dependencies and lint the Trustee chart' \
 		'make trustee-push OCI_REGISTRY=oci://HOST/NAMESPACE  Build and upload the chart' \

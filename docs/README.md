@@ -27,10 +27,10 @@ make demo3
 make demo4
 ```
 
-Set `DEMO_MAGIC_PATH` to use another copy. Commands display and execute automatically against your selected Kubernetes
-context.
+Set `DEMO_MAGIC_PATH` to use another copy. Each command is displayed and waits
+for Enter before executing against your selected Kubernetes context. Automatic
+execution options (`-n` and `-w`) are overridden so every stage requires Enter.
 Install `pv` for simulated typing, or use `DEMO_ARGS="-d"` to disable typing.
-All stages display and execute commands automatically without Enter pauses.
 
 Complete each stage's prerequisites first. Stage 1 installs CoCo; later stages
 refresh their embedded Init-Data. Stage 3 verifies the allowed image completes
